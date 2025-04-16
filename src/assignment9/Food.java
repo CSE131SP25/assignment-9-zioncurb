@@ -1,26 +1,49 @@
 package assignment9;
 
+import edu.princeton.cs.introcs.StdDraw;
 import java.awt.Color;
 
-import edu.princeton.cs.introcs.StdDraw;
-
 public class Food {
+    private double x, y;
+    private double size;
+    private boolean isPowerUp;
 
-	public static final double FOOD_SIZE = 0.02;
-	private double x, y;
-	
-	/**
-	 * Creates a new Food at a random location
-	 */
-	public Food() {
-		//FIXME
-	}
-	
-	/**
-	 * Draws the Food
-	 */
-	public void draw() {
-		//FIXME
-	}
-	
+    public Food(double size, boolean isPowerUp) {
+        this.size = size;  // Ensure food uses the same size
+        this.isPowerUp = isPowerUp;
+        randomizePosition();
+    }
+
+    public void randomizePosition() {
+        this.x = Math.random();  // Random X between 0 and 1
+        this.y = Math.random();  // Random Y between 0 and 1
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public boolean isPowerUp() {
+        return isPowerUp;
+    }
+
+    public void draw() {
+        // Using pastel colors from the ColorUtils for consistency
+        Color color = ColorUtils.getNextColor(); // Get the next pastel color in the cycle
+        StdDraw.setPenColor(color);
+        StdDraw.filledCircle(x, y, size); // Draw food item as a circle with the color
+    }
 }
+
+
+
+
+
